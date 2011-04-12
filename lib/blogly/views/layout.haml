@@ -1,7 +1,16 @@
 !!!
 %head
+  %link{ :rel => 'stylesheet', :href => 'app.css', :type => 'text/css', :media => 'screen, projection' }
+  - if tk = @settings[:typekit]
+    %script{ :src => "http://use.typekit.com/#{tk}.js", :type => 'text/javascript' }
+    :javascript
+      try{Typekit.load();}catch(e){}
 
 %body
   %header
-    %h6 powered by blogly
+    %h1= @settings[:title]
+    %h5 powered by <a href="http://github.com/mikelaurence/blogly">blogly</a>
+
   = yield
+  
+  %footer

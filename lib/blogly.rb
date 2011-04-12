@@ -1,26 +1,49 @@
+require 'rdiscount'
+
 module Blogly
   
   def self.included(app)
     
     app.before do
-      @settings = app.settings
+      @views_path = app.views || './views'
+      @settings = {
+        :title => 'My new blogly blog',
+        :date_format => '%B %d, %Y',
+        :time_format => '%I:%M%p'
+      }
+      @settings.merge! app.blogly_settings rescue nil
     end
     
     app.get "/" do
-      haml_ app, :index
+      @articles = articles(app) || []
+      haml_ :index, :layout => true
     end
     
-    def haml_(app, name, options = {})
-      app_views_path = app.views || './views'
+    app.get '/app.css' do
+      scss :app
+    end
+    
+    
+    protected
+    
+    def articles(app)
+      Dir.glob(File.join(@views_path, 'articles/*.md'))
+    end
+        
+    def haml_(name, options = {})
       blogly_views_path = File.join(File.dirname(__FILE__), '/blogly/views')
-      @path = blogly_views_path unless File.exist?(File.join(app_views_path, "#{name}.haml"))
+      @path = blogly_views_path unless File.exist?(File.join(@views_path, "#{name}.haml"))
 
-      output = haml(:index, :views => @path, :layout => false)
+      output = haml(name, :views => @path, :layout => false, :locals => options[:locals])
 
-      app_layout_path = File.join(app_views_path, 'layout.haml')
-      layout_path = File.exist?(app_layout_path) ? app_layout_path : File.join(blogly_views_path, 'layout.haml')
-      layout = Tilt[:haml].new(layout_path, 1, {})
-      layout.render self, {} { output }
+      if options[:layout]
+        app_layout_path = File.join(@views_path, 'layout.haml')
+        layout_path = File.exist?(app_layout_path) ? app_layout_path : File.join(blogly_views_path, 'layout.haml')
+        layout = Tilt[:haml].new(layout_path, 1, {})
+        layout.render self, {} { output }
+      else
+        output
+      end
     end
   end
   
