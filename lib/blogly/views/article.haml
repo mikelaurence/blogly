@@ -5,15 +5,17 @@
 - url = "/#{filename_bits[0].gsub(/\-/, '/')}/#{filename_bits[2]}"
 - markdown = RDiscount.new(File.read(article)).to_html
 
-- if date
-  %article
-    %header
-      %h2
-        %a{ :href => url }
-          = markdown.slice!(/^<h\d>[^<]*<\/h\d>/)
-      %h5= "Posted on #{date.strftime(@settings[:date_format])}#{' at ' + time.strftime(@settings[:time_format]) if time}"
-      %p.social
-        - unless @settings[:facebook] = false
-          = facebook_like_button(url)
-      
-      = markdown
+%article
+  %header
+    %h2
+      %a{ :href => url }
+        = markdown.slice!(/^<h\d>[^<]*<\/h\d>/)
+    %h5= "Posted on #{date.strftime(@settings[:date_format])}#{' at ' + time.strftime(@settings[:time_format]) if time}"
+    %p.social
+      - unless @settings[:facebook_like] = false
+        = facebook_like_button(url)
+    
+    = markdown
+    
+    - if @show_comments
+      = comments(url)
