@@ -1,12 +1,19 @@
 - filename = article.split('/').last
-- date = DateTime.strptime(filename.split('.')[0], '%Y-%m-%d') rescue nil
-- time = DateTime.strptime(filename.split('.')[1], '%H%M') rescue nil
+- filename_bits = filename.split('.')
+- date = DateTime.strptime(filename_bits[0], '%Y-%m-%d') rescue nil
+- time = DateTime.strptime(filename_bits[1], '%H%M') rescue nil
+- url = "/#{filename_bits[0].gsub(/\-/, '/')}/#{filename_bits[2]}"
 - markdown = RDiscount.new(File.read(article)).to_html
 
 - if date
   %article
     %header
-      %h2= markdown.slice!(/^<h\d>[^<]*<\/h\d>/)
+      %h2
+        %a{ :href => url }
+          = markdown.slice!(/^<h\d>[^<]*<\/h\d>/)
       %h5= "Posted on #{date.strftime(@settings[:date_format])}#{' at ' + time.strftime(@settings[:time_format]) if time}"
+      %p.social
+        - unless @settings[:facebook] = false
+          = facebook_like_button(url)
       
       = markdown

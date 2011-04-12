@@ -29,6 +29,10 @@ module Blogly
     def articles(app)
       Dir.glob(File.join(@views_path, 'articles/*.md'))
     end
+    
+    def facebook_like_button(url)
+      %[<iframe src="http://www.facebook.com/plugins/like.php?href=#{url}&amp;layout=button_count&amp;show_faces=true&amp;width=120&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>]
+    end
         
     def haml_(name, options = {})
       blogly_views_path = File.join(File.dirname(__FILE__), '/blogly/views')
