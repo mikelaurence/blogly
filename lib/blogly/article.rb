@@ -29,7 +29,7 @@ module Blogly
       end
 
       @html = RDiscount.new(markdown).to_html
-      @title = @html.slice!(/^<h\d>([^<]*)<\/h\d>/)[1]
+      @title = @html.slice!(/^<h\d>[^<]*<\/h\d>/).strip_tags
     end
 
   end
