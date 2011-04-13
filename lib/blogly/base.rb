@@ -2,6 +2,8 @@ require 'rdiscount'
 require 'rss/atom'
 
 module Blogly
+  PROJECT_URL = 'http://blogly.info'
+
   module Base
     
     def self.included(app)
@@ -33,7 +35,15 @@ module Blogly
         @article = article(params[:year], params[:month], params[:day], params[:title])
         haml :show, :layout => true
       end
+
       
+
+      # Feeds
+
+      app.get "/feed" do
+        @articles = articles || []
+        haml :feed, :layout => false
+      end
       
       
       # Stylesheets
@@ -49,11 +59,13 @@ module Blogly
       protected
       
       def articles
-        Dir.glob(File.join(@views_path, 'articles/*.md'))
+        Dir.glob(File.join(@views_path, 'articles/*.md')).collect do |filepath|
+          Article.from_file(filepath)
+        end.sort_by{ |a| a.posted_at }.reverse
       end
       
       def article(year, month, day, title)
-        Dir.glob(File.join(@views_path, "articles/#{year}-#{month}-#{day}*#{title}.md")).first
+        Article.from_file(Dir.glob(File.join(@views_path, "articles/#{year}-#{month}-#{day}*#{title}.md")).first)
       end
       
       def facebook_like_button(url)
