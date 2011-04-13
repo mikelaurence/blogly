@@ -1,5 +1,25 @@
 require 'rdiscount'
 
+# Override Sinatra's find_template method to enable overrideable gem views
+# (first attempts to find views in the apps's view path, typically ./views, then checks the gem's view path)
+module Sinatra
+  module Templates
+    def find_template(views, name, engine)
+      Tilt.mappings.each do |ext, klass|
+        next unless klass == engine
+        yield ::File.join(views, "#{name}.#{ext}")
+      end
+      
+      blogly_views_path = File.join(File.dirname(__FILE__), '/blogly/views')
+      Tilt.mappings.each do |ext, klass|
+        next unless klass == engine
+        yield ::File.join(blogly_views_path, "#{name}.#{ext}")
+      end
+    end
+  end
+end
+
+
 module Blogly
   
   def self.included(app)
@@ -63,22 +83,6 @@ module Blogly
       when :facebook
         app_id = nil
         %[<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=#{app_id}&amp;xfbml=1"></script><fb:comments href="#{url}" num_posts="5" width="500"></fb:comments>]
-      end
-    end
-        
-    def haml_(name, options = {})
-      blogly_views_path = File.join(File.dirname(__FILE__), '/blogly/views')
-      @path = blogly_views_path unless File.exist?(File.join(@views_path, "#{name}.haml"))
-
-      output = haml(name, :views => @path, :layout => false, :locals => options[:locals])
-
-      if options[:layout]
-        app_layout_path = File.join(@views_path, 'layout.haml')
-        layout_path = File.exist?(app_layout_path) ? app_layout_path : File.join(blogly_views_path, 'layout.haml')
-        layout = Tilt[:haml].new(layout_path, 1, {})
-        layout.render self, {} { output }
-      else
-        output
       end
     end
   end
