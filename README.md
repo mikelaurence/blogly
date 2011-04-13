@@ -20,22 +20,22 @@ Blogly is a essentially mixin with templates; all it requires is a basic sinatra
 
 The minimum necessary setup with config.ru (so you can use pow or passenger):
 
-  # config.ru
-  require 'bundler'
-  require 'sinatra'
-  Bundler.require
+    # config.ru
+    require 'bundler'
+    require 'sinatra'
+    Bundler.require
 
-  require "#{File.dirname(__FILE__)}/app"
-  run App
+    require "#{File.dirname(__FILE__)}/app"
+    run App
 
-  # app.rb
-  class App < Sinatra::Base
-    include Blogly
-    
-    def self.blogly_settings
-      { :title => "My Hot New Blog" }
+    # app.rb
+    class App < Sinatra::Base
+      include Blogly
+      
+      def self.blogly_settings
+        { :title => "My Hot New Blog" }
+      end
     end
-  end
 
 
 ## Customization
