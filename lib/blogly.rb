@@ -43,18 +43,18 @@ module Blogly
     
     app.get "/" do
       @articles = articles || []
-      haml_ :index, :layout => true
+      haml :index, :layout => true
     end
     
     app.get "/:year/:month/:day/:title" do
       @show_comments = true
       @article = article(params[:year], params[:month], params[:day], params[:title])
-      haml_ :show, :layout => true
+      haml :show, :layout => true
     end
     
     
     
-    # Base stylesheet
+    # Stylesheets
     
     app.get '/app.css' do
       scss :app

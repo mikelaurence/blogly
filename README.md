@@ -1,6 +1,16 @@
 # Blogly
 Cute lil' blogging software for nerds.
 
+## Features
+- Database-free, markdown file publishing: write articles with your favorite text editor & store in source control
+- Full set of overridable, customizable templates
+  - Simple HTML5 markup
+  - Social plugins (Facebook like)
+  - Commenting plugins (Facebook, discus coming soon)
+- Multi-device overridable stylesheets
+  - Basic layouts using the Less Framework for cross-platform readability (including mobile!)
+  - A variety of built-in themes (coming soon!)
+
 ## Setup
 
 
