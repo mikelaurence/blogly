@@ -4,7 +4,7 @@ Cute lil' blogging software for nerds.
 
 ## Features
 - Database-free, markdown file publishing: write articles with your favorite text editor & store in source control
-  - Preprocessing to allow for special effects like hiddenness (0.3), summaries (0.3), and more
+  - Preprocessing to allow for special effects like hiddenness (0.3), summaries (0.3), tags (0.3), and more
   - Code syntax highlighting (0.35)
 - Full set of overridable, customizable templates
   - Simple HTML5 markup
@@ -14,6 +14,7 @@ Cute lil' blogging software for nerds.
   - Basic layouts using the Less Framework for cross-platform readability (including mobile, all in 0.4)
   - A variety of built-in themes (in 0.6)
 - RSS feedage (in 0.2)
+- Caching (in 0.7)
 
 ## Setup
 Blogly is a essentially mixin with templates; all it requires is a basic sinatra app and the line `include Blogly::Base`.
@@ -64,14 +65,15 @@ There are a few ways in which you can customize Blogly:
   - :typekit - If set, automatically includes your typekit bundle (based on bundle ID)
 
 ## Roadmap
-- 0.15: Tests, tests, tests
-- 0.2: RSS feedage
+- 0.15: RSS feedage
+- 0.2: Tests, tests, tests!
 - 0.25: Rake tasks to generate new blog, new articles within a blog
-- 0.3: Markdown preprocessing for hiddenness, `section` grouping, summaries; undated "pages"
+- 0.3: Markdown preprocessing for hiddenness, `section` grouping, summaries; undated "pages"; index pagination
 - 0.35: Code syntax highlighting
 - 0.4: Multi-device layouting
-- 0.5: Discus commenting
+- 0.5: Tags; discus commenting
 - 0.6: Built-in themes
+- 0.7: Caching
 
 ## Contributing to blogly
 #### Note: this sucker is in super active development until 0.5, so don't worry about contributing yet; there are little architectural changes ahead.
