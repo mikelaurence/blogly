@@ -66,6 +66,8 @@ There are a few ways in which you can customize Blogly:
   - :typekit - If set, automatically includes your typekit bundle (based on bundle ID)
 
 ## Roadmap
+- 0.16: Additional stylesheet includes / javascript includes via settings
+- 0.17: Google analytics
 - 0.2: Tests, tests, tests!
 - 0.25: Rake tasks to generate new blog, new articles within a blog
 - 0.3: Markdown preprocessing for hiddenness, `section` grouping, summaries; undated "pages"; index pagination
