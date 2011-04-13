@@ -1,9 +1,9 @@
 !!! XML
 %feed{ :xmlns => "http://www.w3.org/2005/Atom" }
 
-  %title= @settings['title']
+  %title= @settings[:title]
   %link= url('/')
-  %description= @settings['site_description']
+  %description= @settings[:site_description]
   %updated= @articles.first.posted_at.rfc3339
   %generator= Blogly::PROJECT_URL
   <atom:link href="#{url('/feed')}" rel="self" type="application/rss+xml" />
