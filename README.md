@@ -54,6 +54,7 @@ There are a few ways in which you can customize Blogly:
   - *index.haml*: Home page, renders a list of the most recent dated articles and a nav of undated articles (a.k.a. pages) (0.3)
   - *show.haml*: Article page, renders a single article with comments (if enabled)
   - *_article.haml*: Single article content
+  - *feed.haml*: Atom feed
   - *app.scss*: Basic layout styling
   - *themes.scss*: Theme styling (0.6)
 - Set a variety of Blogly settings by defining a class method `blogly_settings` in your application class and returning a hash with any of the following options:
