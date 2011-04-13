@@ -24,10 +24,10 @@ The minimum necessary setup with config.ru (so you can use pow or passenger):
     require 'bundler'
     require 'sinatra'
     Bundler.require
-
+    
     require "#{File.dirname(__FILE__)}/app"
     run App
-
+    
     # app.rb
     class App < Sinatra::Base
       include Blogly
