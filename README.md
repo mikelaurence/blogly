@@ -23,7 +23,7 @@ The minimum necessary setup with config.ru (so you can use pow or passenger):
 
     # Gemfile
     gem 'bundler'
-    gem 'blogly'
+    gem 'blogly', :git => 'git@github.com:mikelaurence/blogly.git' # Until it's more official-ish
 
     # config.ru
     require 'bundler'
