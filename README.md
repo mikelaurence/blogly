@@ -1,6 +1,6 @@
 # Blogly
 Cute lil' blogging software for nerds.
-(Currently version 0.1; future features are marked appropriately)
+(Currently version 0.15; future features are marked appropriately)
 
 ## Features
 - Database-free, markdown file publishing: write articles with your favorite text editor & store in source control
@@ -13,7 +13,7 @@ Cute lil' blogging software for nerds.
 - Multi-device overridable stylesheets
   - Basic layouts using the Less Framework for cross-platform readability (including mobile, all in 0.4)
   - A variety of built-in themes (in 0.6)
-- RSS feedage (in 0.2)
+- RSS feedage
 - Caching (in 0.7)
 
 ## Setup
@@ -66,7 +66,6 @@ There are a few ways in which you can customize Blogly:
   - :typekit - If set, automatically includes your typekit bundle (based on bundle ID)
 
 ## Roadmap
-- 0.15: RSS feedage
 - 0.2: Tests, tests, tests!
 - 0.25: Rake tasks to generate new blog, new articles within a blog
 - 0.3: Markdown preprocessing for hiddenness, `section` grouping, summaries; undated "pages"; index pagination
