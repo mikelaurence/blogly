@@ -20,17 +20,21 @@ Blogly is a essentially mixin with templates; all it requires is a basic sinatra
 
 The minimum necessary setup with config.ru (so you can use pow or passenger):
 
+    # Gemfile
+    gem 'bundler'
+    gem 'blogly'
+
     # config.ru
     require 'bundler'
     require 'sinatra'
     Bundler.require
-    
+
     require "#{File.dirname(__FILE__)}/app"
     run App
-    
+
     # app.rb
     class App < Sinatra::Base
-      include Blogly
+      include Blogly::Base
       
       def self.blogly_settings
         { :title => "My Hot New Blog" }
@@ -70,6 +74,7 @@ There are a few ways in which you can customize Blogly:
 - 0.6: Built-in themes
 
 ## Contributing to blogly
+#### Note: this sucker is in super active development until 0.5, so don't worry about contributing yet; there are little architectural changes ahead.
 - Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 - Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 - Fork the project
