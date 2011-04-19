@@ -43,6 +43,7 @@ The minimum necessary setup with config.ru (so you can use pow or passenger):
     end
 
 Articles should be placed in an *articles* folder within your sinatra views folder (e.g., *./views/articles*) and use the filename format: `YYYY-MM-DD.HHMM.optional-other-text.md`. For example:
+
 - 2010-04-12.0140.blogly-is-the-bees-knees.md
 - 2009-07-16.1520.hey-check-out-my-new-blogly-blog.md
 
