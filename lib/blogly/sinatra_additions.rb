@@ -2,17 +2,13 @@
 # (first attempts to find views in the apps's view path, typically ./views, then checks the gem's view path)
 module Sinatra
   module Templates
-    def find_template(views, name, engine)
-      Tilt.mappings.each do |ext, klass|
-        next unless klass == engine
-        yield ::File.join(views, "#{name}.#{ext}")
-      end
-      
+    alias find_template_ find_template
+
+    def find_template(views, name, engine, &block)
+      find_template_(views, name, engine, &block)
+
       blogly_views_path = File.join(File.dirname(__FILE__), 'views')
-      Tilt.mappings.each do |ext, klass|
-        next unless klass == engine
-        yield ::File.join(blogly_views_path, "#{name}.#{ext}")
-      end
+      find_template_(blogly_views_path, name, engine, &block)
     end
   end
 end
