@@ -1,0 +1,115 @@
+@import 'shared';
+@import 'reset';
+@import 'background';
+@import 'typography';
+@import 'user';
+
+
+/*    Default Layout: 992px. 
+    Gutters: 24px.
+    Outer margins: 48px.
+    Leftover space for scrollbars @1024px: 32px.
+-------------------------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */
+
+body {
+  -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+  
+  header.page, .articles, footer.page {
+    width: 960px;
+    margin: 20px auto;
+  }
+
+  header {
+    h1 {
+      a {
+        color: black;
+        text-decoration: none;
+        &:hover { color: black; }
+        &:visited { color: black; }
+      }
+    }
+  }
+  
+  .articles {
+    margin-top: 3em;
+    article {
+      padding: 20px;
+      background: rgb(211, 255, 111);
+      background: rgba(211, 255, 111, 0.7);
+      border-radius: 20px;
+      box-shadow: #880 0 0 10px;
+      header {
+        h5 {
+          margin-bottom: 1em;
+        }
+      }
+      p {
+        margin-bottom: 0.75em;
+      }
+      section.comments {
+        padding: 20px;
+        background: white;
+        border: solid 1px #ddd;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+
+
+/*    Tablet Layout: 768px.
+    Gutters: 24px.
+    Outer margins: 28px.
+    Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  
+  body {
+    width: 712px;
+    padding: 48px 28px 60px;
+  }
+}
+
+
+
+/*    Mobile Layout: 320px.
+    Gutters: 24px.
+    Outer margins: 34px.
+    Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    */
+
+@media only screen and (max-width: 767px) {
+  
+  body {
+    width: 252px;
+    padding: 48px 34px 60px;
+  }
+  
+}
+
+
+
+/*    Wide Mobile Layout: 480px.
+    Gutters: 24px.
+    Outer margins: 22px.
+    Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  
+  body {
+    width: 436px;
+    padding: 36px 22px 48px;
+  }
+  
+}

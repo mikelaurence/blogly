@@ -5,25 +5,37 @@
 
 Gem::Specification.new do |s|
   s.name = %q{blogly}
-  s.version = "0.1.0"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mike Laurence"]
-  s.date = %q{2011-04-11}
+  s.date = %q{2011-05-11}
   s.description = %q{TODO: longer description of your gem}
   s.email = %q{mklaurence@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
     "Gemfile",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
+    "blogly.gemspec",
     "lib/blogly.rb",
+    "lib/blogly/additions.rb",
+    "lib/blogly/article.rb",
+    "lib/blogly/base.rb",
+    "lib/blogly/sinatra_additions.rb",
+    "lib/blogly/views/_article.haml",
+    "lib/blogly/views/_footer.haml",
+    "lib/blogly/views/_header.haml",
+    "lib/blogly/views/feed.haml",
+    "lib/blogly/views/index.haml",
+    "lib/blogly/views/layout.haml",
+    "lib/blogly/views/show.haml",
     "test/helper.rb",
     "test/test_blogly.rb"
   ]
